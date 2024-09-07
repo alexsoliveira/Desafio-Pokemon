@@ -1,5 +1,4 @@
 ﻿using Desafio.Pokemon.Business.Exceptions;
-using Desafio.Pokemon.Business.Domain;
 using FluentAssertions;
 using DomainEntity = Desafio.Pokemon.Business.Domain;
 
@@ -12,6 +11,8 @@ namespace Desafio.Pokemon.UnitTests.Domain.MestrePokemon
 
         public MestrePokemonTest(MestrePokemonTestFixture fixture)
             => _fixture = fixture;
+
+        #region teste instancia classe Mestre Pokemon
 
         [Fact(DisplayName = nameof(InstanciaMestrePokemon))]
         [Trait("Domain", "MestrePokemon - Aggregates")]
@@ -31,6 +32,10 @@ namespace Desafio.Pokemon.UnitTests.Domain.MestrePokemon
             mestrePokemon.Cpf.Should().Be(mestrePokemonValido.Cpf);
         }
 
+        #endregion        
+
+        #region teste instancia classe Mestre Pokemon Nome com Erro
+
         [Theory(DisplayName = nameof(InstanciaMestrePokemonQuandoNomeVazio))]
         [Trait("Domain", "MestrePokemon - Aggregates")]
         [InlineData("")]
@@ -48,16 +53,71 @@ namespace Desafio.Pokemon.UnitTests.Domain.MestrePokemon
 
             action.Should()
                 .Throw<EntityValidationException>()
-                .WithMessage("");
+                .WithMessage("Nome não pode ser vazio ou null");
             
         }
 
-        [Theory(DisplayName = nameof(InstanciaMestrePokemonQuandoIdadeMenorQueDezOuMaiorQueCem))]
+        [Theory(DisplayName = nameof(InstanciaMestrePokemonQuandoNomeMenorQue3))]
+        [Trait("Domain", "MestrePokemon - Aggregates")]
+        [MemberData(nameof(ObterNomeMenorQue3Caracteres), parameters: 10)]
+        public void InstanciaMestrePokemonQuandoNomeMenorQue3(string? nomeMestrePokemon)
+        {
+            var mestrePokemonValido = _fixture.ObterMestrePokemonValido();
+
+            Action action = () => new DomainEntity.MestrePokemon(
+                nomeMestrePokemon!,
+                mestrePokemonValido.Idade,
+                mestrePokemonValido.Cpf
+            );
+
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Nome deve ser maior ou igual a 3 caracteres");
+
+        }
+
+        public static IEnumerable<object[]> ObterNomeMenorQue3Caracteres(int numberOfTests = 6)
+        {
+            var fixture = new MestrePokemonTestFixture();
+
+            for (int i = 0; i < numberOfTests; i++)
+            {
+                var isOdd = i % 2 == 1;
+                yield return new object[] {
+                    fixture.ObterNomeMestrePokemonValido()[ ..(isOdd ? 1 : 2)]
+                };
+            }
+        }
+
+        [Fact(DisplayName = nameof(InstanciaMestrePokemonQuandoNomeMaiorQue30))]
+        [Trait("Domain", "MestrePokemon - Aggregates")]        
+        public void InstanciaMestrePokemonQuandoNomeMaiorQue30()
+        {            
+            var mestrePokemonValido = _fixture.ObterMestrePokemonValido();
+            var nomeMestrePokemon = string.Join(null, Enumerable.Range(1, 31).Select(_ => "a").ToArray());
+
+            Action action = () => new DomainEntity.MestrePokemon(
+                nomeMestrePokemon!,
+                mestrePokemonValido.Idade,
+                mestrePokemonValido.Cpf
+            );
+
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Nome deve ser menor ou igual a 30 caracteres");
+
+        }
+
+        #endregion
+
+        #region teste instancia classe Mestre Pokemon Idade com Erro
+
+        [Theory(DisplayName = nameof(InstanciaMestrePokemonQuandoIdadeMenorQueDez))]
         [Trait("Domain", "MestrePokemon - Aggregates")]
         [InlineData(9)]
-        [InlineData(101)]
+        [InlineData(1)]
         [InlineData(0)]
-        public void InstanciaMestrePokemonQuandoIdadeMenorQueDezOuMaiorQueCem(byte idadeMestrePokemon)
+        public void InstanciaMestrePokemonQuandoIdadeMenorQueDez(byte idadeMestrePokemon)
         {
             var mestrePokemonValido = _fixture.ObterMestrePokemonValido();
 
@@ -69,36 +129,31 @@ namespace Desafio.Pokemon.UnitTests.Domain.MestrePokemon
 
             action.Should()
                 .Throw<EntityValidationException>()
-                .WithMessage("");
+                .WithMessage("Idade deve ser maior ou igual a 10");
 
         }
 
-        //[Theory(DisplayName = nameof(InstanciaMestrePokemonQuandoIdadeMenorQueDezOuMaiorQueCem))]
-        //[Trait("Domain", "MestrePokemon - Aggregates")]
-        //[InlineData("99999999999")]
-        //[InlineData(" ")]
-        //[InlineData("00000000000")]
-        //[InlineData(null)]
-        //public void InstanciaMestrePokemonQuandoCpfEhInvalido(string cpfMestrePokemon)
-        //{
-        //    var mestrePokemonValido = _fixture.ObterMestrePokemonValido();
-        //    var cpfInvalido = new CPF();
+        [Theory(DisplayName = nameof(InstanciaMestrePokemonQuandoIdadeMaiorQueCem))]
+        [Trait("Domain", "MestrePokemon - Aggregates")]
+        [InlineData(109)]
+        [InlineData(101)]
+        [InlineData(200)]
+        public void InstanciaMestrePokemonQuandoIdadeMaiorQueCem(byte idadeMestrePokemon)
+        {
+            var mestrePokemonValido = _fixture.ObterMestrePokemonValido();
 
-        //    Action action = () => new DomainEntity.MestrePokemon(
-        //        mestrePokemonValido.Nome,
-        //        mestrePokemonValido.Idade,
-        //        cpfMestrePokemon
-        //    );
+            Action action = () => new DomainEntity.MestrePokemon(
+                mestrePokemonValido.Nome,
+                idadeMestrePokemon,
+                mestrePokemonValido.Cpf
+            );
 
-        //    action.Should()
-        //        .Throw<EntityValidationException>()
-        //        .WithMessage("");
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Idade deve ser menor ou igual a 100");
 
-        //}
+        }
 
-        // Validar instancia mestre pokemon com cpf invalido
-        // Validar instancia mestre pokemon com nome valido
-        // Validar instancia mestre pokemon com idade valido
-        // Validar instancia mestre pokemon com cpf valido
+        #endregion        
     }
 }
