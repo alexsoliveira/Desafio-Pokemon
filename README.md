@@ -46,4 +46,13 @@ Nesse teste você deverá desenvolver um projeto para listar pokémons, utilizan
 
 ## Suporte
 
-Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma. 
+Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma.
+
+# Início do Desafio Pokemon
+
+1. Comecei analisando os requisitos do README.md. Em um folha de papel, utilizei de rascunho para levantar, quais endpoints serão criados. Depois desenhei uma arquitetura em outra folha de papel. E iniciei o projeto criando um reprositório no GitHub. Também fiz investigação na api https://pokeapi.co/ para verificar a documentação.
+2. Com uma rascunho de uma possível arquitetura e om um entendimento da api e README.md do desafio, iniciei com a classe MestrePokemon dentro de uma camada Business onde será colocado meu dominio de negocio, também foi criado a camada de Teste Unitario, onde começei testando meu domínio MestrePokemon.
+
+
+
+
