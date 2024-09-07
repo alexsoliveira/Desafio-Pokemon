@@ -2,7 +2,7 @@
 
 namespace Desafio.Pokemon.Business.Validations
 {
-    public class DomainValidation
+    public static class DomainValidation
     {
         public static void NotNull(object? target, string fieldName)
         {
@@ -44,6 +44,6 @@ namespace Desafio.Pokemon.Business.Validations
             if (target > maxLength)
                 throw new EntityValidationException(
                     $"{fieldName} deve ser menor ou igual a {maxLength}");
-        }
+        }        
     }
 }
