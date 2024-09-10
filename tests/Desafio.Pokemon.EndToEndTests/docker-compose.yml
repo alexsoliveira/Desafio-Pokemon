@@ -1,0 +1,10 @@
+﻿﻿version: '3.4'
+services:
+  desafio.pokemon.database:
+    container_name: desafiopokemondb-e2e
+    hostname: desafiopokemondb-e2e
+    image: mysql
+    ports:
+      - 33060:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: D3$4f10p0k3m0n

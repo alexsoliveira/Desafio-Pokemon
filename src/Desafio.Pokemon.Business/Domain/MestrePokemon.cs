@@ -18,6 +18,15 @@ namespace Desafio.Pokemon.Business.Domain
             Validar();
         }
 
+        // EF contructor
+        private MestrePokemon(string nome, byte idade)
+        {
+            Nome = nome;
+            Idade = idade;            
+
+            Validar();
+        }
+
         private void Validar()
         {
             DomainValidation.NotNullOrEmpty(Nome, nameof(Nome));
