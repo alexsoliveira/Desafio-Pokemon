@@ -1,4 +1,5 @@
 ﻿using Bogus.Extensions.Brazil;
+using Desafio.Pokemon.Api.ViewModels;
 using Desafio.Pokemon.Business.Domain;
 using Desafio.Pokemon.EndToEndTests.Base;
 
@@ -40,10 +41,10 @@ namespace Desafio.Pokemon.EndToEndTests.Api.Common
             return idade;
         }
 
-        public Cpf ObterCPFMestrePokemonValido()
+        public CpfViewModel ObterCPFMestrePokemonValido()
         {
 
-            var cpf = new Cpf(
+            var cpf = new CpfViewModel(
                 Faker.Person.Cpf().Replace("-", "").Replace(".", "")
             );
 
