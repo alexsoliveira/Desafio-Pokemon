@@ -1,6 +1,6 @@
 ﻿namespace Desafio.Pokemon.EndToEndTests.Api.CriarMestrePokemon
 {
-    public class CriarMestrePokemonApiTestDataGenerator
+    public static class CriarMestrePokemonApiTestDataGenerator
     {
         public static IEnumerable<object[]> ObterEntradasInvalidas()
         {

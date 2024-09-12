@@ -1,6 +1,5 @@
 ﻿using Bogus.Extensions.Brazil;
 using Desafio.Pokemon.Api.ViewModels;
-using Desafio.Pokemon.Business.Domain;
 using Desafio.Pokemon.EndToEndTests.Base;
 
 namespace Desafio.Pokemon.EndToEndTests.Api.Common
@@ -34,8 +33,7 @@ namespace Desafio.Pokemon.EndToEndTests.Api.Common
         public byte ObterIdadeMestrePokemonValido()
         {
             byte idade = 0;
-
-            //regra para idade valida de 10 até 100 anos.
+            
             idade = (byte)new Random().Next(10, 100);
 
             return idade;
