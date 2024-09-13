@@ -11,13 +11,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Pokemon.Business", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Pokemon.UnitTests", "tests\Desafio.Pokemon.UnitTests\Desafio.Pokemon.UnitTests.csproj", "{FEB2717A-5AFF-414D-94D7-5DEADF6D4327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Pokemon.Data.EF", "src\Desafio.Pokemon.Data.EF\Desafio.Pokemon.Data.EF.csproj", "{76FD2711-C84D-4FFF-AA0B-35DA210D2FE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Pokemon.Data.EF", "src\Desafio.Pokemon.Data.EF\Desafio.Pokemon.Data.EF.csproj", "{76FD2711-C84D-4FFF-AA0B-35DA210D2FE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Pokemon.IntegrationTests", "tests\Desafio.Pokemon.IntegrationTests\Desafio.Pokemon.IntegrationTests.csproj", "{17380EFA-52D1-434E-8485-B68FF1EF432D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Pokemon.IntegrationTests", "tests\Desafio.Pokemon.IntegrationTests\Desafio.Pokemon.IntegrationTests.csproj", "{17380EFA-52D1-434E-8485-B68FF1EF432D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Pokemon.Api", "src\Desafio.Pokemon.Api\Desafio.Pokemon.Api.csproj", "{972EBBAA-302E-47B5-BEBB-2502D62EC0B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Pokemon.Api", "src\Desafio.Pokemon.Api\Desafio.Pokemon.Api.csproj", "{972EBBAA-302E-47B5-BEBB-2502D62EC0B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Pokemon.EndToEndTests", "tests\Desafio.Pokemon.EndToEndTests\Desafio.Pokemon.EndToEndTests.csproj", "{BC3EAFD0-6EC2-4FFA-AC6A-8BE659E6EF46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Pokemon.EndToEndTests", "tests\Desafio.Pokemon.EndToEndTests\Desafio.Pokemon.EndToEndTests.csproj", "{BC3EAFD0-6EC2-4FFA-AC6A-8BE659E6EF46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "env", "env", "{27EC35FA-9AB5-4576-AE26-2F16B5E93F47}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

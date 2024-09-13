@@ -1,4 +1,5 @@
 ﻿using Desafio.Pokemon.Business.Domain;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace Desafio.Pokemon.Api.ViewModels
 {
@@ -7,13 +8,13 @@ namespace Desafio.Pokemon.Api.ViewModels
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public byte Idade { get; set; }
-        public Cpf Cpf { get; set; }
+        public CpfViewModel Cpf { get; set; }
 
-        public MestrePokemonViewModel(string nome, byte idade, Cpf cpf)
-        {
+        public MestrePokemonViewModel(string nome, byte idade, CpfViewModel cpf)
+        {                        
             Nome = nome;
             Idade = idade;
             Cpf = cpf;
-        }
+        }                   
     }
 }

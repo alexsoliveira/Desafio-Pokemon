@@ -27,10 +27,16 @@ namespace Desafio.Pokemon.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
         public async Task<IActionResult> Criar(
-            [FromBody] MestrePokemonViewModel mestrePokemonViewModel
+            [FromBody] InputViewModel input
         )
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
+           
+            MestrePokemonViewModel mestrePokemonViewModel = new MestrePokemonViewModel(
+                input.Nome,
+                input.Idade,
+                input.Cpf
+            );                
 
             var resultado = await _mestrePokemonService
                 .CriarMestrePokemon(_mapper.Map<MestrePokemon>(mestrePokemonViewModel));
