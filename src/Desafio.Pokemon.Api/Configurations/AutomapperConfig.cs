@@ -8,7 +8,7 @@ namespace Desafio.Pokemon.Api.Configurations
     {
         public AutomapperConfig() 
         {
-            CreateMap<MestrePokemon, MestrePokemonViewModel>().ReverseMap();
+            CreateMap<MestrePokemon, MestrePokemonViewModel>().ReverseMap();                   
             CreateMap<Cpf, CpfViewModel>().ReverseMap();
         }
     }

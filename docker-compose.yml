@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:  
+    desafio.pokemon.api:
+        image: desafio-pokemon-api:latest
+        container_name: desafio.pokemon.api
+        build:
+            context: ./src
+            dockerfile: ./Desafio.Pokemon.Api/Dockerfile
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_HTTP_PORTS=5000
+            - ASPNETCORE_HTTPS_PORTS=5001
+            - ASPNETCORE_URLS=http://*:5000
+        ports:
+            - "5000:5000"
+            - "5001:5001"
+        networks:
+            - desafio-pokemon-networks
+
+networks:
+  desafio-pokemon-networks:    
+    driver: bridge
+
+  # desafio.pokemon.database:
+  #   image: alpine:latest
+  #   volumes:
+  #     - ./src/Desafio.Pokemon.Api:/data
+  #   command: sh -c "apk --no-cache add sqlite && cp /data/initial-db.sqlite /data/db.sqlite && sqlite3 /data/db.sqlite < /data/init.sql && tail -f /dev/null"
+  #   container_name: sqlite-container
+
+  # sqlitebrowser:
+  #   image: linuxserver/sqlitebrowser
+  #   ports:
+  #     - "3001:3000"
+  #   # depends_on:
+  #   #   - sqlite-container
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=UTC
+  #     - ENABLE_UWSGI=true
+  #   volumes:
+  #     - sqlite_data:/data/db
+  #   container_name: sqlitebrowser
+
+# volumes:
+#   sqlite_data:

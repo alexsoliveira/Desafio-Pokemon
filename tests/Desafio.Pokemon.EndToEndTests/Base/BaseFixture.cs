@@ -32,11 +32,9 @@ namespace Desafio.Pokemon.EndToEndTests.Base
         {
             var context = new DesafioPokemonDbContext(
                 new DbContextOptionsBuilder<DesafioPokemonDbContext>()
-                //.UseMySql(
-                //    _dbConnectionString,
-                //    ServerVersion.AutoDetect(_dbConnectionString)
-                //)                
-                .UseInMemoryDatabase("end2end-tests-db")
+                .UseSqlite(
+                    _dbConnectionString                    
+                )                
                 .Options
             );
             return context;

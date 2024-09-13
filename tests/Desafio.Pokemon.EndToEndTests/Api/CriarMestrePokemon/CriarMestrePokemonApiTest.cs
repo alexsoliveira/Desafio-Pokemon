@@ -1,5 +1,4 @@
 ﻿using Desafio.Pokemon.Api.ViewModels;
-using Desafio.Pokemon.Business.Domain;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -20,14 +20,10 @@ namespace Desafio.Pokemon.Api.Configurations
         )
         {
             var connectionString = configuration.GetConnectionString("DesafioPokemonDb");
-            services.AddDbContext<DesafioPokemonDbContext>(
-                options => options.UseInMemoryDatabase(
-                    "InMemory-DSV-Database"
+            services.AddDbContext<DesafioPokemonDbContext>(                
+                options => options.UseSqlite(
+                    connectionString                    
                 )
-                //options => options.UseMySql(
-                //    connectionString,
-                //    ServerVersion.AutoDetect(connectionString)
-                //)
             );
             return services;
         }
