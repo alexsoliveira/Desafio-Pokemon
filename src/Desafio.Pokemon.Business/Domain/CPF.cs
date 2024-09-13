@@ -1,5 +1,4 @@
-﻿using Desafio.Pokemon.Business.Exceptions;
-using Desafio.Pokemon.Business.Validations;
+﻿using Desafio.Pokemon.Business.Validations;
 
 namespace Desafio.Pokemon.Business.Domain
 {
