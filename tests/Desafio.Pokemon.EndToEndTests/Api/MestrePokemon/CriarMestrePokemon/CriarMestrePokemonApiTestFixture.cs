@@ -1,7 +1,7 @@
 ﻿using Desafio.Pokemon.Api.ViewModels;
-using Desafio.Pokemon.EndToEndTests.Api.Common;
+using Desafio.Pokemon.EndToEndTests.Api.MestrePokemon.Common;
 
-namespace Desafio.Pokemon.EndToEndTests.Api.CriarMestrePokemon
+namespace Desafio.Pokemon.EndToEndTests.Api.MestrePokemon.CriarMestrePokemon
 {
     [CollectionDefinition(nameof(CriarMestrePokemonApiTestFixture))]
     public class CriarMestrePokemonApiTestFixtureCollection
@@ -14,8 +14,6 @@ namespace Desafio.Pokemon.EndToEndTests.Api.CriarMestrePokemon
 
         public CriarMestrePokemonApiTestFixture()
             : base() { }
-
-        
 
         public MestrePokemonViewModel ObterExemploMestrePokemon()
             => new(

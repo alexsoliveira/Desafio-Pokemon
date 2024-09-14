@@ -1,4 +1,4 @@
-﻿using Desafio.Pokemon.Business.Domain.Pokemon.Evolucao;
+﻿using Desafio.Pokemon.Business.Domain.Pokemon.Evolucao.CadeiaEvolucao;
 using System.Text.Json.Serialization;
 
 namespace Desafio.Pokemon.Business.Domain.Pokemon
@@ -17,6 +17,6 @@ namespace Desafio.Pokemon.Business.Domain.Pokemon
         [JsonPropertyName("types")]
         public List<PokemonType>? Types { get; set; }
 
-        public PokemonEvolucao? Evolucao { get; set; }
+        public CadeiaEvolucao? Evolucao { get; set; }
     }
 }

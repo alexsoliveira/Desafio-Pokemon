@@ -1,4 +1,6 @@
-﻿namespace Desafio.Pokemon.EndToEndTests.Api.CriarMestrePokemon
+﻿using Desafio.Pokemon.EndToEndTests.Api.MestrePokemon.CriarMestrePokemon;
+
+namespace Desafio.Pokemon.EndToEndTests.Api.MestrePokemon.MestrePokemon.CriarMestrePokemon
 {
     public static class CriarMestrePokemonApiTestDataGenerator
     {

@@ -1,10 +1,11 @@
 ﻿using Desafio.Pokemon.Api.ViewModels;
+using Desafio.Pokemon.EndToEndTests.Api.MestrePokemon.MestrePokemon.CriarMestrePokemon;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Desafio.Pokemon.EndToEndTests.Api.CriarMestrePokemon
+namespace Desafio.Pokemon.EndToEndTests.Api.MestrePokemon.CriarMestrePokemon
 {
     [Collection(nameof(CriarMestrePokemonApiTestFixture))]
     public class CriarMestrePokemonApiTest : IDisposable
@@ -40,7 +41,7 @@ namespace Desafio.Pokemon.EndToEndTests.Api.CriarMestrePokemon
             dbMestrePokemon!.Nome.Should().Be(input.Nome);
             dbMestrePokemon.Idade.Should().Be(input.Idade);
             dbMestrePokemon.Cpf.Numero.Should().Be(input.Cpf.Numero);
-            dbMestrePokemon.Id.Should().NotBeEmpty();            
+            dbMestrePokemon.Id.Should().NotBeEmpty();
         }
 
         [Theory(DisplayName = nameof(ErrorQuandoInstanciaAggregate))]

@@ -14,7 +14,7 @@ namespace Desafio.Pokemon.IntegrationTests.Services.MestrePokemon
             => _fixture = fixture;
 
         [Fact(DisplayName = nameof(CriarMestrePokemon))]
-        [Trait("Integration/Services", "CriarMestrePkemon - Services")]
+        [Trait("Integration/Services", "CriarMestrePokemon - Services")]
         public async Task CriarMestrePokemon()
         {
             var dbContext = _fixture.CriarDbContext();

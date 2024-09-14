@@ -2,7 +2,7 @@
 using Desafio.Pokemon.Api.ViewModels;
 using Desafio.Pokemon.EndToEndTests.Base;
 
-namespace Desafio.Pokemon.EndToEndTests.Api.Common
+namespace Desafio.Pokemon.EndToEndTests.Api.MestrePokemon.Common
 {
     public class MestrePokemonBaseFixture
         : BaseFixture
@@ -33,7 +33,7 @@ namespace Desafio.Pokemon.EndToEndTests.Api.Common
         public byte ObterIdadeMestrePokemonValido()
         {
             byte idade = 0;
-            
+
             idade = (byte)new Random().Next(10, 100);
 
             return idade;
@@ -55,24 +55,24 @@ namespace Desafio.Pokemon.EndToEndTests.Api.Common
 
             while (nomeMestrePokemon.Length < 2)
                 nomeMestrePokemon = Faker.Commerce.ProductName().Substring(0, 2);
-            
+
             return nomeMestrePokemon;
         }
 
         public string ObterNomeLongoMestrePokemonInvalido()
-        {            
+        {
             var nomeMestrePokemon = Faker.Commerce.ProductName();
 
             while (nomeMestrePokemon.Length <= 30)
                 nomeMestrePokemon = $"{nomeMestrePokemon} {Faker.Commerce.ProductName()}";
-            
+
             return nomeMestrePokemon;
         }
 
         public byte ObterIdadeMenorMestrePokemonInvalido()
         {
             byte idade = 0;
-            
+
             idade = (byte)new Random().Next(0, 9);
 
             return idade;
@@ -81,7 +81,7 @@ namespace Desafio.Pokemon.EndToEndTests.Api.Common
         public byte ObterIdadeMaiorMestrePokemonInvalido()
         {
             byte idade = 0;
-            
+
             idade = (byte)new Random().Next(101, 190);
 
             return idade;
