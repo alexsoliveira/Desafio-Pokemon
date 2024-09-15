@@ -16,6 +16,9 @@ namespace Desafio.Pokemon.Api.Configurations
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddScoped<IPokemonService, PokemonService>();
+            services.AddHttpClient<PokemonService>();
+
             return services;
         }
     }

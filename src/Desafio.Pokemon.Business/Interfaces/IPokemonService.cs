@@ -6,8 +6,8 @@ namespace Desafio.Pokemon.Business.Interfaces
 {
     public interface IPokemonService
     {
-        Task<(HttpResponseMessage?, List<PokemonDetalhes>?)> ObterPokemons();
-        Task<(HttpResponseMessage?, PokemonDetalhes?)> ObterPokemonPorId(int id);
+        Task<IEnumerable<PokemonDetalhes>?> ObterPokemons();
+        Task<PokemonDetalhes?> ObterPokemonPorId(int id);
 
         Task<(HttpResponseMessage?, PokemonDetalhes?)> ObterDetalhesPokemonPorId(int id);
         Task<(HttpResponseMessage?, PokemonEvolucao?)> ObterEvolucaoPokemonPorId(int id);

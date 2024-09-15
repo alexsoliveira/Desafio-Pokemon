@@ -22,44 +22,29 @@ namespace Desafio.Pokemon.Business.Services
         }
             
 
-        public async Task<(HttpResponseMessage?, List<PokemonDetalhes>?)> ObterPokemons()
+        public async Task<IEnumerable<PokemonDetalhes>?> ObterPokemons()
         {
+            List<PokemonDetalhes> listaPokemons = new List<PokemonDetalhes>();            
 
-            //var url = PrepareGetRoute("pokemon-form/", null);
-            //var response = await _httpClient.GetAsync(url);
-            //var output = await GetOutput<List<PokemonDetalhes>>(response);
-            //return (response, output);
+            while (listaPokemons.Count < 10)
+            {
+                var input = new Random().Next(1, 151);
 
-            ////    var request = new HttpRequestMessage(HttpMethod.Get, $"");
-            ////    var response = await _httpClient.GetAsync(request);
+                var output = await ObterPokemonPorId(input);
 
-            ////    var response = await _httpClient.PostAsync(
-            ////        route,
-            ////        new StringContent(
-            ////            JsonSerializer.Serialize(payload),
-            ////            Encoding.UTF8,
-            ////            "application/json"
-            ////        )
-            ////    );
-            ////    var output = await GetOutput<TOutput>(response);
-            ////    return (response, output);
+                if (output != null)
+                {
+                    listaPokemons.Add(output);
+                }
+                else
+                    throw new EntityValidationException(
+                        "Erro ao obter detalhes do pokemon");
+            }            
 
-            ////    public async Task<(HttpResponseMessage?, TOutput?)> Get<TOutput>(
-            ////    string route,
-            ////    object? queryStringParametersObject = null
-            ////)
-            ////    where TOutput : class
-            ////    {
-            ////        var url = PrepareGetRoute("");
-            ////        var response = await _httpClient.GetAsync(url);
-            ////        var output = await GetOutput<TOutput>(response);
-            ////        return (response, output);
-            //    }
-            
-            return (null, null);
+            return listaPokemons;
         }
 
-        public async Task<(HttpResponseMessage?, PokemonDetalhes?)> ObterPokemonPorId(int id)
+        public async Task<PokemonDetalhes?> ObterPokemonPorId(int id)
         {
             var (responseDetalhes, outputDetalhes) = await ObterDetalhesPokemonPorId(id);
 
@@ -83,18 +68,18 @@ namespace Desafio.Pokemon.Business.Services
                         }
                         else
                             throw new EntityValidationException(
-                                $"Não foi possível obter cadeia de evolução");
+                                "Não foi possível obter cadeia de evolução");
                     }
                 }
                 else
                     throw new EntityValidationException(
-                        $"Não foi possível obter evolução do pokemon");
+                        "Não foi possível obter evolução do pokemon");
             }
             else
                 throw new EntityValidationException(
-                    $"Não foi possível obter deetalhes do pokemon");
+                    "Não foi possível obter detalhes do pokemon");
 
-            return (responseDetalhes, outputDetalhes);            
+            return outputDetalhes;            
         }
 
         public async Task<(HttpResponseMessage?, PokemonDetalhes?)> ObterDetalhesPokemonPorId(int id)

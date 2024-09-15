@@ -2,7 +2,7 @@
 
 namespace Desafio.Pokemon.Business.Domain.Pokemon
 {
-    public class Type
+    public class Tipo
     {
         [JsonPropertyName("name")]
         public string? Name { get; set; }

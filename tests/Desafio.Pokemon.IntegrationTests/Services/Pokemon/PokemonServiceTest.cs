@@ -22,10 +22,11 @@ namespace Desafio.Pokemon.IntegrationTests.Services.Pokemon
             var service = new DomainService.PokemonService(
                 new HttpClient()
             );
-            var (response, output) = await service.ObterPokemonPorId(input);
+            var output = await service.ObterPokemonPorId(input);
+            //var (response, output) = await service.ObterPokemonPorId(input);
 
-            response.Should().NotBeNull();
-            response!.StatusCode.Should().Be(HttpStatusCode.OK);
+            //response.Should().NotBeNull();
+            //response!.StatusCode.Should().Be(HttpStatusCode.OK);
             output.Should().NotBeNull();
             output!.Id.Should().Be(input);
         }

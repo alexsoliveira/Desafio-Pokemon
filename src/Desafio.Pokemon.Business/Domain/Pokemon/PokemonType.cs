@@ -8,6 +8,6 @@ namespace Desafio.Pokemon.Business.Domain.Pokemon
         public int? Slot { get; set; }
 
         [JsonPropertyName("type")]
-        public Type? Type { get; set; }
+        public Tipo? Type { get; set; }
     }
 }
