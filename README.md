@@ -50,8 +50,18 @@ Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobr
 
 # Início do Desafio Pokemon
 
-1. Comecei analisando os requisitos do README.md. Em um folha de papel, utilizei de rascunho para levantar, quais endpoints serão criados. Depois desenhei uma arquitetura em outra folha de papel. E iniciei o projeto criando um reprositório no GitHub. Também fiz investigação na api https://pokeapi.co/ para verificar a documentação.
-2. Com uma rascunho de uma possível arquitetura e om um entendimento da api e README.md do desafio, iniciei com a classe MestrePokemon dentro de uma camada Business onde será colocado meu dominio de negocio, também foi criado a camada de Teste Unitario, onde começei testando meu domínio MestrePokemon.
+1. Comecei analisando os requisitos do README.md. Em um folha de papel, utilizei de rascunho para levantar, quais endpoints serão criados. Depois desenhei uma arquitetura em outra folha de papel. E iniciei o projeto criando um repositório no GitHub. Também fiz investigação na api (https://pokeapi.co/) para verificar a documentação.
+2. Com uma rascunho de uma possível arquitetura e com um entendimento da api e README.md do desafio, iniciei com a classe MestrePokemon dentro de uma camada Business onde será colocado meu dominio de negocio, também foi criado a camada de Teste Unitario, onde começei testando meu domínio MestrePokemon.
+3. Em seguida, foi cria a classe de DomainValidator onde foi colocado algumas regras de validação para o dominio MestrePokemon. Também foi ciara a classe CPF fazendo relacao com a classe MestrePokemon.
+4. Foi incluido nos teste de unidade as validações do CPF com sua regras.
+5. Depois foi criado o teste de intergraçao e feito teste com banco de dados em memória. Logo em seguida foi criado a interface IMestrePokemonService e a classe MestrePokemonService. Foi criado a camada de data onde foi colocado o EntetyFrameworkCore onde foi colocado o banco de Dados SQLite.
+6. A principio tente colocar SQLite4, mais vi que no próprio site do sqlite.org (https://sqlite.org/src4/doc/trunk/www/index.wiki) recomenda utiliza o SQLite3.
+7. Tentei colocar o SQLite dentro de um container, mas não consegui ainda, então estou utilizando dentro da aplicacao. Com o banco de dado funcionando comecei os teste de End to End. Em seguida foi cria a camada de api.
+8. onde foi colcado as controller MestrePokemon para pode fazer o cadastro de um novo mestre pokemon, passando o nome, idade e cpf. Foi incluido algumas regras para nome, idade e cpf. Para nome é permitido no minimo 3 caracteres e no maximo 30 caracteres. Para Idade é permitido idade no minimo 10 anos e no máximo 100 anos. E para cpf as regras normais que tem de um cpf brasileiro.
+9. Depois das validações mestre pokemon, foi usado a api (https://pokeapi.co/) para obter os pokemons. Utilizado a lista de pokemons da primeira geração, para ser fazer o consumo da api.
+10. Foi utilizado 3 metodos da api (https://pokeapi.co/) que são: (https://pokeapi.co/api/v2/pokemon-form/{id do pokemon ou nome do pokemon}) para obter os detalhes do pokemon, (https://pokeapi.co/api/v2/pokemon-species/{id d pokemon}) para obter o id da cadeias da evoluções do pokemon e a (https://pokeapi.co/api/v2/evolution-chain/{id do pokemon}) para obter as cadeias de evolução do pokemon.
+11. Foi criado na camada de business as classes para consumir do dados da api, também foi criado a interface IPokemonService e a classe PokemonService, responsável por consumir as apis e retorna os dados para controller PokemonController.
+12. Em seguida foi criado testes de integração com os metodos fornecidos pela api. 
 
 
 
